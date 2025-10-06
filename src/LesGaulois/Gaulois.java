@@ -3,10 +3,12 @@ package LesGaulois;
 public class Gaulois {
 	private String nom;
 	private int force;
+	private int effetPotion = 1;
 
 	public Gaulois(String nom, int force) {
 		this.nom = nom;
 		this.force = force;
+		this.effetPotion = effetPotion;
 	}
 
 	public String getNom() {
@@ -29,8 +31,14 @@ public class Gaulois {
 	public void frapper(Romain romain) {
 		String nomRomain = romain.getNom();
 		System.out.println(nom + " envoie un grand coup dans la mâchoire de " + nomRomain);
-		int forceCoup = force / 3;
-		romain.recevoirCoup(forceCoup);
+
+		int forceCoup = (force * this.effetPotion) / 3;
+		if (this.effetPotion == 1) {
+			romain.recevoirCoup(force);
+		} else {
+			romain.recevoirCoup(forceCoup);
+			this.effetPotion -= 1;
+		}
 	}
 
 	public static void main(String[] args) {
@@ -40,6 +48,6 @@ public class Gaulois {
 	}
 
 	public void boirePotion(int forcePotion) {
-
+		this.effetPotion = forcePotion;
 	}
 }
