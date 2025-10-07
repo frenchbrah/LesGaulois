@@ -1,4 +1,4 @@
-package LesGaulois;
+package personnages;
 
 import objets.Chaudron;
 

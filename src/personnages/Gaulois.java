@@ -1,14 +1,16 @@
-package LesGaulois;
+package personnages;
 
 public class Gaulois {
 	private String nom;
 	private int force;
 	private int effetPotion = 1;
+	private Village village;
 
 	public Gaulois(String nom, int force) {
 		this.nom = nom;
 		this.force = force;
 		this.effetPotion = effetPotion;
+		this.village = village;
 	}
 
 	public String getNom() {
@@ -25,7 +27,7 @@ public class Gaulois {
 
 	@Override
 	public String toString() {
-		return "Gaulois [nom]";
+		return "Gaulois []";
 	}
 
 	public void frapper(Romain romain) {
@@ -50,4 +52,23 @@ public class Gaulois {
 	public void boirePotion(int forcePotion) {
 		this.effetPotion = forcePotion;
 	}
+
+	public void setVillage(Village village) {
+		this.village = village;
+	}
+
+	public void sePresenter() {
+		if (this.village == null) {
+			System.out.println(this.prendreParole() + "Bonjour, je m'appelle " + this.getNom()
+					+ ". Je voyage de village en village");
+		}
+		if (this.village.getChef() == this) {
+			System.out.println(this.prendreParole() + "Bonjour, je m'appelle " + this.getNom()
+					+ " Je suis le chef du village " + this.village.getNom());
+		} else {
+			System.out.println(this.prendreParole() + "Bonjour, je m'appelle " + this.getNom()
+					+ " J'habite dans le village " + this.village.getNom());
+		}
+	}
+
 }
